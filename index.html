@@ -120,16 +120,14 @@
         ];
 
         const quotes = [
-            "\"People say nothing is impossible, but I do nothing every day.\" – A. A. Milne",
-            "\"Better to remain silent and be thought a fool than to speak out and remove all doubt.\" – Unknown",
-            "\"I’m sick of following my dreams, man. I’m just going to ask where they’re going and hook up with ’em later.\" – Mitch Hedberg",
-            "\"A pessimist is a person who has had to listen to too many optimists.\" – Don Marquis",
-            "\"There is no 'I' in team, but there is a 'u' in funny.\" – Unknown",
-            "\"In soloing – as in other activities – it is far easier to start something than it is to finish it.\" – Amelia Earhart",
-            "\"It's the consciousness with which we participate in activities that makes the difference.\" – Michael Beckwith",
-            "\"Laughter is a universal language.\" – Unknown",
-            "\"Humor has the power to bring joy and laughter to even the most competitive of environments.\" – Unknown",
-            "\"Life has plenty of pleasures to enjoy, but it gets busy. Take a step back and laugh.\" – Unknown"
+            "“Never put off till tomorrow what you can do the day after tomorrow just as well.” – Mark Twain",
+            "“If you could kick the person in the pants responsible for most of your trouble, you wouldn’t sit for a month.” – Theodore Roosevelt",
+            "“Clothes make the man. Naked people have little or no influence on society.” – Mark Twain",
+            "“Do what you feel in your heart to be right—for you’ll be criticized anyway.” – Eleanor Roosevelt",
+            "“The only way to get rid of a temptation is to yield to it.” – Oscar Wilde",
+            "“Go to heaven for the climate, hell for the company.” – Mark Twain",
+            "“A lie gets halfway around the world before the truth has a chance to get its pants on.” – Winston Churchill",
+            "“Never interrupt your enemy when he is making a mistake.” – Napoleon Bonaparte"
         ];
 
         function randomActivity() {
@@ -137,7 +135,6 @@
             document.getElementById("activity").textContent = activity;
         }
 
-        // Display a random quote on page load
         document.getElementById("activity").textContent = quotes[Math.floor(Math.random() * quotes.length)];
     </script>
 </body>

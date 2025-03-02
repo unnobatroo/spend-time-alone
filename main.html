@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BORED ALONE</title>
+    <style>
+        body {
+            background-color: black;
+            color: #FFFF99;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        hr {
+            width: 50%;
+            border: none;
+            height: 3px;
+        }
+        .green-line {
+            background-color: #00FF00;
+        }
+        .purple-line {
+            background-color: #FF00FF;
+        }
+        .activity {
+            font-size: 14px;
+        }
+        .button {
+            margin-top: 20px;
+        }
+        button {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            background: linear-gradient(to bottom, #fff, #ccc);
+            border: 2px solid black;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .footer {
+            font-size: 12px;
+            color: #CC6666;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>WHAT KIND OF A QUEST AWAITS YOU NEXT?</h1>
+    <hr class="green-line">
+    <p class="activity" id="activity">"People say nothing is impossible, but I do nothing every day." – A. A. Milne</p>
+    <hr class="purple-line">
+    <div class="button">
+        <button onclick="randomActivity()">I'm feeling lucky!</button>
+    </div>
+    <div class="footer">
+        <p>BORED ALONE, code, design, and all related indicia are trademarks of Ultomotro. © 2025</p>
+    </div>
+
+    <script>
+        const activities = [
+            "Go out for a walk.",
+            "Read a book.",
+            "Watch a TV show.",
+            "Make a new recipe.",
+            "Join a workout class.",
+            "Write a letter to your future self.",
+            "Do the house chores.",
+            "Laundry.",
+            "Make a vision board.",
+            "Organize your space.",
+            "Meal prep.",
+            "Meditate.",
+            "Listen to a podcast.",
+            "Get a massage.",
+            "Accomplish a to-do list.",
+            "Create a music playlist.",
+            "Join a cooking/baking class.",
+            "Go to the gym.",
+            "Fix your resume.",
+            "Re-decorate your home.",
+            "Try a new hairstyle.",
+            "Wash your car.",
+            "Recite the Quran / Pray.",
+            "Make yummy snacks.",
+            "Play music.",
+            "Do a face mask.",
+            "Organize your closet.",
+            "Do a hair mask.",
+            "Learn a new language.",
+            "Write a journal.",
+            "Online shopping.",
+            "Have a pamper day.",
+            "Call your parents.",
+            "Bake something.",
+            "Start a free course.",
+            "Work on your current goals.",
+            "Declutter your email inbox.",
+            "Go out for a coffee.",
+            "Drive to a nice lookout.",
+            "Plan your upcoming week.",
+            "Catch up on some sleep.",
+            "Donate to charity.",
+            "Treat yourself with good food.",
+            "Backup your phone/computer.",
+            "Watch a TED talk.",
+            "Go for a bike ride.",
+            "Weed your garden.",
+            "Join a book club.",
+            "Watch a movie at the cinema.",
+            "Spend time around animals.",
+            "Visit a forest.",
+            "Turn off your phone.",
+            "Burn a nice smelling candle.",
+            "Learn how to knit.",
+            "Reorganize your kitchen cabinet.",
+            "Play dress up."
+        ];
+
+        const quotes = [
+            "\"People say nothing is impossible, but I do nothing every day.\" – A. A. Milne",
+            "\"Better to remain silent and be thought a fool than to speak out and remove all doubt.\" – Unknown",
+            "\"I’m sick of following my dreams, man. I’m just going to ask where they’re going and hook up with ’em later.\" – Mitch Hedberg",
+            "\"A pessimist is a person who has had to listen to too many optimists.\" – Don Marquis",
+            "\"There is no 'I' in team, but there is a 'u' in funny.\" – Unknown",
+            "\"In soloing – as in other activities – it is far easier to start something than it is to finish it.\" – Amelia Earhart",
+            "\"It's the consciousness with which we participate in activities that makes the difference.\" – Michael Beckwith",
+            "\"Laughter is a universal language.\" – Unknown",
+            "\"Humor has the power to bring joy and laughter to even the most competitive of environments.\" – Unknown",
+            "\"Life has plenty of pleasures to enjoy, but it gets busy. Take a step back and laugh.\" – Unknown"
+        ];
+
+        function randomActivity() {
+            const activity = activities[Math.floor(Math.random() * activities.length)];
+            document.getElementById("activity").textContent = activity;
+        }
+
+        // Display a random quote on page load
+        document.getElementById("activity").textContent = quotes[Math.floor(Math.random() * quotes.length)];
+    </script>
+</body>
+</html>

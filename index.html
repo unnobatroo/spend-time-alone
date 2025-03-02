@@ -130,10 +130,17 @@
             "“Never interrupt your enemy when he is making a mistake.” – Napoleon Bonaparte"
         ];
 
+        let lastActivityIndex = -1;
+
         function randomActivity() {
-            const activity = activities[Math.floor(Math.random() * activities.length)];
-            document.getElementById("activity").textContent = activity;
-        }
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * activities.length);
+        } while (newIndex === lastActivityIndex);
+
+        lastActivityIndex = newIndex;
+        document.getElementById("activity").textContent = activities[newIndex];
+}
 
         document.getElementById("activity").textContent = quotes[Math.floor(Math.random() * quotes.length)];
     </script>

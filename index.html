@@ -1,148 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODAY'S MISSION</title>
     <style>
         body {
-            background-color: black;
-            color: #FFFF99;
+            background-color: #818181;
+            color: black;
+            font-family: "MS Sans Serif", Arial, sans-serif;
             text-align: center;
-            font-family: 'Times New Roman', serif;
         }
-        h1 {
+
+        .header {
             font-size: 24px;
             font-weight: bold;
-        }
-        hr {
-            width: 50%;
-            border: none;
-            height: 3px;
-        }
-        .green-line {
-            background-color: #00FF00;
-        }
-        .purple-line {
-            background-color: #FF00FF;
-        }
-        .activity {
-            font-size: 14px;
-        }
-        .button {
             margin-top: 20px;
         }
+
+        .window {
+            width: 420px;
+            margin: 20px auto;
+            background-color: #F8E8A6;
+            border: 3px solid black;
+            padding: 12px;
+            text-align: left;
+            box-shadow: 6px 6px 0px black;
+        }
+
+        .box {
+            background: white;
+            border: 3px inset gray;
+            padding: 8px;
+            margin-bottom: 12px;
+        }
+
         button {
-            font-family: Arial, sans-serif;
+            font-family: "MS Sans Serif", Arial, sans-serif;
+            border: 2px outset gray;
+            padding: 6px 10px;
             font-size: 14px;
             font-weight: bold;
-            background: linear-gradient(to bottom, #fff, #ccc);
-            border: 2px solid black;
-            padding: 10px 20px;
             cursor: pointer;
+            transition: 0.2s;
         }
+
+        button:active {
+            border: 2px inset gray;
+        }
+
+        .add-btn {
+            background: #007BFF;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background: #0056b3;
+        }
+
+        .remove-btn {
+            background: #FF4B4B;
+            color: white;
+        }
+
+        .remove-btn:hover {
+            background: #c0392b;
+        }
+
+        .new-activity-btn {
+            background: #28A745;
+            color: white;
+        }
+
+        .new-activity-btn:hover {
+            background: #218838;
+        }
+
         .footer {
+            margin-top: 20px;
             font-size: 12px;
-            color: #CC6666;
-            margin-top: 40px;
+        }
+
+        .activity-buttons {
+            display: flex;
+            gap: 8px;
         }
     </style>
 </head>
+
 <body>
-    <h1>TODAY'S MISSION</h1>
-    <hr class="green-line">
-    <p class="activity" id="activity">"People say nothing is impossible, but I do nothing every day." – A. A. Milne</p>
-    <hr class="purple-line">
-    <div class="button">
-        <button onclick="randomActivity()">I'm feeling lucky!</button>
-    </div>
-    <div class="footer">
-        <p>TODAY'S MISSION, code and design are copyright of /unnobatroo. © 2025</p>
+    <div class="header">TODAY'S MISSION</div>
+
+    <div class="window">
+        <div class="content">
+            <div class="box">
+                <p id="activity">Loading activity...</p>
+                <div class="activity-buttons">
+                    <button class="remove-btn" onclick="removeActivity()">Remove</button>
+                    <button class="new-activity-btn" onclick="randomActivity()">New Activity</button>
+                </div>
+            </div>
+
+            <div class="box">
+                <input type="text" id="newActivity" placeholder="Add new activity">
+                <button class="add-btn" onclick="addCustomActivity()">Add</button>
+            </div>
+
+            <p class="footer">Created by <a href="https://github.com/unnobatroo" target="_blank">Jaloliddin
+                    Ismailov</a>, © 2025</p>
+        </div>
     </div>
 
     <script>
         const activities = [
-            "Go out for a walk.",
-            "Read a book.",
-            "Watch a TV show.",
-            "Make a new recipe.",
-            "Join a workout class.",
-            "Write a letter to your future self.",
-            "Do the house chores.",
-            "Laundry.",
-            "Make a vision board.",
-            "Organize your space.",
-            "Meal prep.",
-            "Meditate.",
-            "Listen to a podcast.",
-            "Get a massage.",
-            "Accomplish a to-do list.",
-            "Create a music playlist.",
-            "Join a cooking/baking class.",
-            "Go to the gym.",
-            "Fix your resume.",
-            "Re-decorate your home.",
-            "Try a new hairstyle.",
-            "Wash your car.",
-            "Make yummy snacks.",
-            "Play music.",
-            "Do a face mask.",
-            "Organize your closet.",
-            "Do a hair mask.",
-            "Learn a new language.",
-            "Write a journal.",
-            "Online shopping.",
-            "Have a pamper day.",
-            "Call your parents.",
-            "Bake something.",
-            "Start a free course.",
-            "Work on your current goals.",
-            "Declutter your email inbox.",
-            "Go out for a coffee.",
-            "Drive to a nice lookout.",
-            "Plan your upcoming week.",
-            "Catch up on some sleep.",
-            "Donate to charity.",
-            "Treat yourself with good food.",
-            "Backup your phone/computer.",
-            "Watch a TED talk.",
-            "Go for a bike ride.",
-            "Weed your garden.",
-            "Join a book club.",
-            "Watch a movie at the cinema.",
-            "Spend time around animals.",
-            "Visit a forest.",
-            "Turn off your phone.",
-            "Burn a nice smelling candle.",
-            "Learn how to knit.",
-            "Reorganize your kitchen cabinet.",
-            "Play dress up."
+            "Go out for a walk.", "Read a book.", "Watch a TV show.", "Make a new recipe.",
+            "Join a workout class.", "Write a letter to your future self.", "Do the house chores.",
+            "Laundry.", "Make a vision board.", "Organize your space.", "Meal prep.", "Meditate.",
+            "Listen to a podcast.", "Get a massage.", "Accomplish a to-do list.", "Create a music playlist.",
+            "Join a cooking/baking class.", "Go to the gym.", "Fix your resume.", "Re-decorate your home.",
+            "Try a new hairstyle.", "Wash your car.", "Make yummy snacks.", "Play music.",
+            "Do a face mask.", "Organize your closet.", "Do a hair mask.", "Learn a new language.",
+            "Write a journal.", "Online shopping.", "Have a pamper day.", "Call your parents.",
+            "Bake something.", "Start a free course.", "Work on your current goals.",
+            "Declutter your email inbox.", "Go out for a coffee.", "Drive to a nice lookout.",
+            "Plan your upcoming week.", "Catch up on some sleep.", "Donate to charity.",
+            "Treat yourself with good food.", "Backup your phone/computer.", "Watch a TED talk.",
+            "Go for a bike ride.", "Weed your garden.", "Join a book club.", "Watch a movie at the cinema.",
+            "Spend time around animals.", "Visit a forest.", "Turn off your phone.", "Burn a nice smelling candle.",
+            "Learn how to knit.", "Reorganize your kitchen cabinet.", "Play dress up."
         ];
-
-        const quotes = [
-            "“Never put off till tomorrow what you can do the day after tomorrow just as well.” – Mark Twain",
-            "“If you could kick the person in the pants responsible for most of your trouble, you wouldn’t sit for a month.” – Theodore Roosevelt",
-            "“Clothes make the man. Naked people have little or no influence on society.” – Mark Twain",
-            "“Do what you feel in your heart to be right—for you’ll be criticized anyway.” – Eleanor Roosevelt",
-            "“The only way to get rid of a temptation is to yield to it.” – Oscar Wilde",
-            "“Go to heaven for the climate, hell for the company.” – Mark Twain",
-            "“A lie gets halfway around the world before the truth has a chance to get its pants on.” – Winston Churchill",
-            "“Never interrupt your enemy when he is making a mistake.” – Napoleon Bonaparte"
-        ];
-
-        let lastActivityIndex = -1;
 
         function randomActivity() {
-        let newIndex;
-        do {
-            newIndex = Math.floor(Math.random() * activities.length);
-        } while (newIndex === lastActivityIndex);
+            document.getElementById("activity").textContent =
+                activities.length ? activities[Math.floor(Math.random() * activities.length)] : "No activities available.";
+        }
 
-        lastActivityIndex = newIndex;
-        document.getElementById("activity").textContent = activities[newIndex];
-}
+        function addCustomActivity() {
+            const newActivity = document.getElementById("newActivity").value.trim();
+            if (newActivity) {
+                activities.push(newActivity);
+                document.getElementById("newActivity").value = "";
+                alert("Activity added!");
+            }
+        }
 
-        document.getElementById("activity").textContent = quotes[Math.floor(Math.random() * quotes.length)];
+        function removeActivity() {
+            const current = document.getElementById("activity").textContent;
+            const index = activities.indexOf(current);
+            if (index !== -1) {
+                activities.splice(index, 1);
+                alert(`"${current}" removed.`);
+                randomActivity();
+            } else {
+                alert("Activity not found.");
+            }
+        }
+
+        window.onload = function () {
+            randomActivity();
+        };
     </script>
 </body>
+
 </html>

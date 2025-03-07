@@ -4,212 +4,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>TODAY'S MISSION</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
 
-body {
-    background: black;
-    font-family: 'Share Tech Mono', monospace;
-    text-align: center;
-    color: #00ff00;
-    cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur131.cur'), auto;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-}
+        :root {
+            --primary-color: #00ff00;
+            --background-color: black;
+            --border-color: #00ff00;
+            --box-shadow: #00ff00;
+            --button-bg: #00ff00;
+            --button-hover-bg: #003300;
+            --button-hover-text: #00ff00;
+            --title-bar-bg: #003300;
+        }
 
-.matrix-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    overflow: hidden;
-    z-index: -1;
-}
+        [data-theme="s-mode"] {
+            --primary-color: #ff00ff;
+            --border-color: #ff00ff;
+            --box-shadow: #ff00ff;
+            --button-bg: #ff00ff;
+            --button-hover-bg: #330033;
+            --button-hover-text: #ff00ff;
+            --title-bar-bg: #330033;
+        }
 
-canvas {
-    display: block;
-}
+        body {
+            background: var(--background-color);
+            font-family: 'IBM Plex Mono', monospace;
+            text-align: center;
+            color: var(--primary-color);
+            cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur131.cur'), auto;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
 
-.window {
-    width: 90%;
-    max-width: 450px;
-    margin: 30px auto;
-    background: rgba(0, 0, 0, 0.9);
-    border: 3px solid #00ff00;
-    padding: 15px;
-    text-align: left;
-    box-shadow: 0px 0px 15px #00ff00;
-    position: relative;
-    z-index: 10;
-}
+        .title-bar span {
+            font-weight: bold;
+        }
 
-.title-bar {
-    background: #003300;
-    color: #00ff00;
-    padding: 8px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px;
-}
+        .window {
+            width: 90%;
+            max-width: 450px;
+            margin: 30px auto;
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid var(--border-color);
+            padding: 15px;
+            text-align: left;
+            box-shadow: 0px 0px 15px var(--box-shadow);
+        }
 
-.box {
-    background: black;
-    border: 2px inset #00ff00;
-    padding: 12px;
-    margin: 12px 0;
-    color: #00ff00;
-    font-size: 16px;
-}
+        .title-bar {
+            background: var(--title-bar-bg);
+            color: var(--primary-color);
+            padding: 8px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
 
-input {
-    width: calc(100% - 20px);
-    padding: 8px;
-    font-size: 14px;
-    border: 2px solid #00ff00;
-    background: black;
-    color: #00ff00;
-    font-family: 'Share Tech Mono', monospace;
-    outline: none;
-    margin-bottom: 10px;
-}
+        .switch {
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--primary-color);
+            transition: color 0.3s ease-in-out;
+        }
 
-button {
-    font-family: 'Share Tech Mono', monospace;
-    border: 2px outset #00ff00;
-    padding: 8px 15px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    color: black;
-    background: #00ff00;
-    text-transform: uppercase;
-    transition: all 0.1s ease-in-out;
-}
+        .box {
+            background: var(--background-color);
+            border: 2px inset var(--border-color);
+            padding: 12px;
+            margin: 12px 0;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
 
-button:hover {
-    background: #003300;
-    color: #00ff00;
-}
+        input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            font-size: 14px;
+            border: 2px solid var(--border-color);
+            background: var(--background-color);
+            color: var(--primary-color);
+            font-family: 'Share Tech Mono', monospace;
+            outline: none;
+            margin-bottom: 10px;
+        }
 
-button:active {
-    border: 2px inset #00ff00;
-    transform: translateY(2px);
-}
+        button {
+            font-family: 'Share Tech Mono', monospace;
+            border: 2px outset var(--border-color);
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            color: black;
+            background: var(--button-bg);
+            text-transform: uppercase;
+            transition: all 0.1s ease-in-out;
+        }
 
-.alert {
-    display: none;
-    background: black;
-    color: #00ff00;
-    padding: 8px;
-    border: 2px inset #00ff00;
-    text-align: center;
-    margin-top: 12px;
-    font-size: 14px;
-}
+        button:hover {
+            background: var(--button-hover-bg);
+            color: var(--button-hover-text);
+        }
 
-#addedActivities {
-    list-style: none;
-    padding: 0;
-    margin-top: 10px;
-    max-height: 200px;
-    overflow-y: auto;
-}
+        button.delete {
+            background: #FF3333;
+            color: white;
+            border: 2px solid darkred;
+        }
 
-#addedActivities li {
-    background: black;
-    padding: 8px;
-    margin: 6px 0;
-    border: 2px inset #00ff00;
-    font-size: 14px;
-    color: #00ff00;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        button.delete:hover {
+            background: darkred;
+        }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .window {
-        width: 95%;
-        margin: 20px auto;
-        padding: 10px;
-    }
+        button.purge {
+            background: #660033;
+            color: white;
+            border: 2px solid black;
+        }
 
-    .title-bar {
-        font-size: 14px;
-        padding: 6px;
-    }
+        button.purge:hover {
+            background: #99004D;
+        }
 
-    .box {
-        font-size: 14px;
-        padding: 10px;
-    }
+        .alert {
+            display: none;
+            background: var(--primary-color);
+            /* Match theme */
+            color: black;
+            /* Ensure contrast */
+            padding: 8px;
+            border: 2px inset var(--border-color);
+            text-align: center;
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: bold;
+        }
 
-    button {
-        font-size: 12px;
-        padding: 6px 12px;
-    }
+        #addedActivities {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
 
-    input {
-        font-size: 12px;
-        padding: 6px;
-    }
-}
-
-@media (max-width: 480px) {
-    .window {
-        width: 95%;
-        margin: 15px auto;
-    }
-
-    .title-bar {
-        font-size: 12px;
-        padding: 5px;
-    }
-
-    .box {
-        font-size: 12px;
-        padding: 8px;
-    }
-
-    button {
-        font-size: 11px;
-        padding: 5px 10px;
-    }
-
-    input {
-        font-size: 11px;
-        padding: 5px;
-    }
-}
+        #addedActivities li {
+            background: var(--background-color);
+            padding: 8px;
+            margin: 6px 0;
+            border: 2px inset var(--border-color);
+            font-size: 14px;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 </head>
 
-<body>
-    <div class="matrix-bg">
-        <canvas id="matrixCanvas"></canvas>
-    </div>
-
+<body data-theme="j-mode">
     <div class="window">
         <div class="title-bar">
             <span>TODAY'S MISSION</span>
-            <span>☰</span>
+            <div class="switch" onclick="toggleTheme()">
+                <i id="theme-icon" class="fa-solid fa-book"></i>
+            </div>
         </div>
         <div class="box">
             <p id="activity">Decoding...</p>
-            <button onclick="removeActivity()">Delete</button>
+            <button class="delete" onclick="removeActivity()">Delete</button>
             <button onclick="randomActivity()">New Task</button>
         </div>
         <div class="box">
             <input type="text" id="newActivity" placeholder="Enter your command">
             <button onclick="addCustomActivity()">Upload</button>
-            <button onclick="removeAddedActivities()">Purge</button>
+            <button class="purge" onclick="removeAddedActivities()">Purge</button>
         </div>
         <ul id="addedActivities"></ul>
         <div id="alert" class="alert">Task uploaded successfully.</div>
@@ -234,81 +210,154 @@ button:active {
             "Learn how to knit.", "Reorganize your kitchen cabinet.", "Play dress up."
         ];
 
+        const defaultActivities = [...activities];
+
+        function saveUserActivities() {
+            const userActivities = activities.filter(task => !defaultActivities.includes(task));
+            localStorage.setItem("savedActivities", JSON.stringify(userActivities));
+        }
+
+        function loadFromLocalStorage() {
+            const savedActivities = JSON.parse(localStorage.getItem("savedActivities")) || [];
+            activities = [...defaultActivities, ...savedActivities]; // Default stays, only load user-added
+            document.getElementById("addedActivities").innerHTML = ""; // Clear previous
+            savedActivities.forEach(task => addTaskToList(task));
+        }
+
         function randomActivity() {
-            document.getElementById("activity").textContent =
-                activities[Math.floor(Math.random() * activities.length)];
+            if (activities.length === 0) {
+                document.getElementById("activity").textContent = "No activities left.";
+                return;
+            }
+            const randomTask = activities[Math.floor(Math.random() * activities.length)];
+            setActivity(randomTask);
         }
 
         function removeActivity() {
-            document.getElementById("activity").textContent = "Decoding...";
+            const currentTask = document.getElementById("activity").textContent;
+
+            if (defaultActivities.includes(currentTask)) {
+                showAlert("You can't delete default activities.");
+                return;
+            }
+
+            activities = activities.filter(task => task !== currentTask);
+            saveUserActivities();
+            removeTaskFromList(currentTask);
+
+            if (activities.length > defaultActivities.length) {
+                setActivity(activities[defaultActivities.length]); // Show next user activity
+            } else {
+                document.getElementById("activity").textContent = "No activities left.";
+            }
         }
 
         function addCustomActivity() {
             const input = document.getElementById("newActivity");
-            const task = input.value.trim();
-            if (task === "") return; // Prevent empty tasks
+            let task = input.value.trim();
 
-            // Prevent duplicates
+            if (task === "") {
+                showAlert("Please enter a valid task.");
+                return;
+            }
+
             if (activities.includes(task)) {
                 showAlert("Task already exists!");
                 return;
             }
 
-            // Add to activities array
             activities.push(task);
-
-            // Update UI
+            saveUserActivities();
             addTaskToList(task);
             setActivity(task);
             showAlert("Task uploaded successfully.");
-            input.value = ""; // Clear input after adding
+            input.value = "";
         }
 
         function addTaskToList(task) {
             const list = document.getElementById("addedActivities");
-
             const li = document.createElement("li");
             li.textContent = task;
-            li.style.cursor = "pointer";
-            li.onclick = () => setActivity(task); // Set as main task when clicked
+            li.onclick = () => setActivity(task);
 
-            // Create delete button
             const deleteBtn = document.createElement("button");
             deleteBtn.textContent = "✖";
-            deleteBtn.style.marginLeft = "10px";
-            deleteBtn.style.background = "black";
-            deleteBtn.style.color = "#00ff00";
-            deleteBtn.style.border = "none";
-            deleteBtn.style.cursor = "pointer";
+            deleteBtn.classList.add("delete");
+
             deleteBtn.onclick = (event) => {
-                event.stopPropagation(); // Prevent triggering the main task set
-                li.remove();
-                activities = activities.filter(a => a !== task); // Remove from activities array
+                event.stopPropagation();
+                removeTaskFromList(task);
+                activities = activities.filter(a => a !== task);
+                saveUserActivities();
+
+                const currentTask = document.getElementById("activity").textContent;
+                if (currentTask === task) {
+                    randomActivity();
+                }
             };
 
             li.appendChild(deleteBtn);
             list.appendChild(li);
         }
 
-        function setActivity(task) {
-            document.getElementById("activity").textContent = task;
+        function removeTaskFromList(task) {
+            if (defaultActivities.includes(task)) return; // Don't remove default tasks
+
+            const list = document.getElementById("addedActivities");
+            const items = list.getElementsByTagName("li");
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].textContent.includes(task)) {
+                    items[i].remove();
+                    break;
+                }
+            }
         }
 
         function removeAddedActivities() {
-            document.getElementById("addedActivities").innerHTML = "";
-            showAlert("All tasks purged.");
+            localStorage.removeItem("savedActivities");
+            loadFromLocalStorage();
+        }
+
+        function setActivity(task) {
+            document.getElementById("activity").textContent = task;
+            localStorage.setItem("currentActivity", task);
         }
 
         function showAlert(message) {
             const alertBox = document.getElementById("alert");
             alertBox.textContent = message;
             alertBox.style.display = "block";
+            alertBox.style.background = getComputedStyle(document.body).getPropertyValue("--primary-color"); // Apply theme color
+
             setTimeout(() => {
                 alertBox.style.display = "none";
-            }, 2000); // Hide after 2 seconds
+            }, 2000);
         }
 
-        window.onload = randomActivity;
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute("data-theme");
+            const newTheme = currentTheme === "j-mode" ? "s-mode" : "j-mode";
+            body.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+
+            const themeIcon = document.getElementById("theme-icon");
+            themeIcon.className = newTheme === "j-mode" ? "fa-solid fa-book" : "fa-solid fa-heart";
+        }
+
+        function loadTheme() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                document.body.setAttribute("data-theme", savedTheme);
+                const themeIcon = document.getElementById("theme-icon");
+                themeIcon.className = savedTheme === "j-mode" ? "fa-solid fa-book" : "fa-solid fa-heart";
+            }
+        }
+
+        window.onload = function () {
+            loadTheme();
+            loadFromLocalStorage();
+        };
     </script>
 </body>
 

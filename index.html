@@ -140,31 +140,59 @@
     </div>
 
     <script>
-        const activities = [
-            "Go out for a walk.", "Read a book.", "Watch a TV show.", "Make a new recipe.",
-            "Join a workout class.", "Write a letter to your future self.", "Do the house chores.",
-            "Laundry.", "Make a vision board.", "Organize your space.", "Meal prep.", "Meditate.",
-            "Listen to a podcast.", "Get a massage.", "Accomplish a to-do list.", "Create a music playlist.",
-            "Join a cooking/baking class.", "Go to the gym.", "Fix your resume.", "Re-decorate your home.",
-            "Try a new hairstyle.", "Wash your car.", "Make yummy snacks.", "Play music.",
-            "Do a face mask.", "Organize your closet.", "Do a hair mask.", "Learn a new language.",
-            "Write a journal.", "Online shopping.", "Have a pamper day.", "Call your parents.",
-            "Bake something.", "Start a free course.", "Work on your current goals.",
-            "Declutter your email inbox.", "Go out for a coffee.", "Drive to a nice lookout.",
-            "Plan your upcoming week.", "Catch up on some sleep.", "Donate to charity.",
-            "Treat yourself with good food.", "Backup your phone/computer.", "Watch a TED talk.",
-            "Go for a bike ride.", "Weed your garden.", "Join a book club.", "Watch a movie at the cinema.",
-            "Spend time around animals.", "Visit a forest.", "Turn off your phone.", "Burn a nice smelling candle.",
-            "Learn how to knit.", "Reorganize your kitchen cabinet.", "Play dress up."
-        ];
+    const activities = [
+        "Go out for a walk.", "Read a book.", "Watch a TV show.", "Make a new recipe.",
+        "Join a workout class.", "Write a letter to your future self.", "Do the house chores.",
+        "Laundry.", "Make a vision board.", "Organize your space.", "Meal prep.", "Meditate.",
+        "Listen to a podcast.", "Get a massage.", "Accomplish a to-do list.", "Create a music playlist.",
+        "Join a cooking/baking class.", "Go to the gym.", "Fix your resume.", "Re-decorate your home.",
+        "Try a new hairstyle.", "Wash your car.", "Make yummy snacks.", "Play music.",
+        "Do a face mask.", "Organize your closet.", "Do a hair mask.", "Learn a new language.",
+        "Write a journal.", "Online shopping.", "Have a pamper day.", "Call your parents.",
+        "Bake something.", "Start a free course.", "Work on your current goals.",
+        "Declutter your email inbox.", "Go out for a coffee.", "Drive to a nice lookout.",
+        "Plan your upcoming week.", "Catch up on some sleep.", "Donate to charity.",
+        "Treat yourself with good food.", "Backup your phone/computer.", "Watch a TED talk.",
+        "Go for a bike ride.", "Weed your garden.", "Join a book club.", "Watch a movie at the cinema.",
+        "Spend time around animals.", "Visit a forest.", "Turn off your phone.", "Burn a nice smelling candle.",
+        "Learn how to knit.", "Reorganize your kitchen cabinet.", "Play dress up."
+    ];
 
-        function randomActivity() {
-            document.getElementById("activity").textContent =
-                activities[Math.floor(Math.random() * activities.length)];
-        }
+    function randomActivity() {
+        document.getElementById("activity").textContent =
+            activities[Math.floor(Math.random() * activities.length)];
+    }
 
-        window.onload = randomActivity;
-    </script>
+    function addCustomActivity() {
+        const input = document.getElementById("newActivity");
+        const task = input.value.trim();
+        if (task === "") return; // Prevent empty tasks
+
+        const list = document.getElementById("addedActivities");
+        const li = document.createElement("li");
+        li.textContent = task;
+        list.appendChild(li);
+
+        input.value = ""; // Clear input after adding
+        showAlert("Task uploaded successfully.");
+    }
+
+    function removeAddedActivities() {
+        document.getElementById("addedActivities").innerHTML = "";
+        showAlert("All tasks purged.");
+    }
+
+    function showAlert(message) {
+        const alertBox = document.getElementById("alert");
+        alertBox.textContent = message;
+        alertBox.style.display = "block";
+        setTimeout(() => {
+            alertBox.style.display = "none";
+        }, 2000); // Hide after 2 seconds
+    }
+
+    window.onload = randomActivity;
+</script>
 </body>
 
 </html>
